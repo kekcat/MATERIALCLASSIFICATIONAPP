@@ -1,0 +1,10 @@
+Wood
+Steel
+Concrete
+Obsidian
+Coal
+Conglomerate
+Copper
+Bismuth
+Gold
+Granite
