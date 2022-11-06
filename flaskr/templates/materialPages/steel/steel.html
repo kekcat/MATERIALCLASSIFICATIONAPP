@@ -5,100 +5,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="flaskr\templates\style.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "JetBrains Mono",monospace;}
-</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body class="w3-light-grey">
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
-  <div class="w3-row-padding">
-    <div class="w3-third">
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="https://media.discordapp.net/attachments/555116792821972992/1004817850323701880/steel.jpg" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>Steel</h2>
-          </div>
+    <div class="w3-content w3-margin-top" style="max-width:1400px;">
+      <div class="w3-row-padding">
+        <div class="w3-third">
+          <div class="w3-white w3-text-grey w3-card-4">
+            <div class="w3-display-container">
+              <img src="https://media.discordapp.net/attachments/555116792821972992/1004817850323701880/steel.jpg" style="width:100%" alt="Avatar">
+              <div class="w3-display-bottomleft w3-container w3-text-black">
+                <h2>Steel</h2>
+              </div>
+            </div>
+            <div class="w3-container">
+              <hr class="solid">
+              <p>Steel - {{ data['percents']['Steel'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Steel'] }}%">-</div>
+              </div>
+              <p>Copper - {{ data['percents']['Copper'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Copper'] }}%">-</div>    
+              </div>
+              <p>Wood - {{ data['percents']['Wood'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Wood'] }}%">-</div>
+              </div>
+              <p>Gold - {{ data['percents']['Gold'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Gold'] }}%">-</div>
+              </div>
+              <p>Gold - {{ data['percents']['Granite'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Granite'] }}%">-</div>
+              </div>
+              <p>Gold - {{ data['percents']['Obsidian'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Obsidian'] }}%">-</div>
+              </div>
+              <p>Gold - {{ data['percents']['Coal'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Coal'] }}%">-</div>
+              </div>
+              <p>Gold - {{ data['percents']['Concrete'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Concrete'] }}%">-</div>
+              </div>
+              <p>Gold - {{ data['percents']['Bismuth'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Bismuth'] }}%">-</div>
+              </div>
+              <p>Gold - {{ data['percents']['Conglomerate'] }}%</p>
+              <div class="w3-light-grey w3-round-xlarge w3-small">
+                <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Conglomerate'] }}%">-</div>
+              </div>
+              <br>
+              <br>
+            </div>
+          </div><br>
         </div>
-        <div class="w3-container">
-          <p><i class="w3-large w3-text-black"></i>Designer</p>
-          <hr>
-          <p>Steel - {{ data['percents']['Steel'] }}%</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Steel'] }}%">-</div>
-          </div>
-          <p>Copper - {{ data['percents']['Copper'] }}%</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Copper'] }}%">-</div>    
-          </div>
-          <p>Wood - {{ data['percents']['Wood'] }}%</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Wood'] }}%">-</div>
-          </div>
-          <p>Gold - {{ data['percents']['Gold'] }}%</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:{{ data['percents']['Gold'] }}%">-</div>
-          </div>
-          <br>
-          <br>
-        </div>
-      </div><br>
-    </div>
     <div class="w3-twothird">
       <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+        <div class="flex-parent-element">
+          <div class="flex-child-element magenta"><h2 class="w3-text-grey"><i class=" fa-fw w3-margin-right w3-text-black"></i>Overview</h2></div>
+          <div class="flex-child-element green"><div id="left"><a href="https://en.wikipedia.org/wiki/Steel">Wikipedia</a></div></div>
+        </div>
+        <hr class="solid">
         <div class="w3-container">
-          <h5 class="w3-opacity"><b>Front End Developer / w3schools.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <p>Steel is an alloy made up of iron with typically a few tenths of a percent of carbon to improve its strength and fracture resistance compared to other forms of iron. Many other elements may be present or added. Stainless steels that are corrosion- and oxidation-resistant typically need an additional 11% chromium. Because of its high tensile strength and low cost, steel is used in buildings, infrastructure, tools, ships, trains, cars, machines, electrical appliances, weapons, and rockets. Iron is the base metal of steel. Depending on the temperature, it can take two crystalline forms (allotropic forms): body-centred cubic and face-centred cubic. The interaction of the allotropes of iron with the alloying elements, primarily carbon, gives steel and cast iron their range of unique properties.</p>
           <hr>
         </div>
         <div class="w3-container">
-          <h5 class="w3-opacity"><b>Web Developer / something.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
-          <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <h5 class="w3-opacity"><b>Properties</b></h5>
+          <p>The density of steel varies based on the alloying constituents but usually ranges between 7,750 and 8,050 kg/m3 (484 and 503 lb/cu ft), or 7.75 and 8.05 g/cm3 (4.48 and 4.65 oz/cu in).[8]
+
+            Even in a narrow range of concentrations of mixtures of carbon and iron that make steel, several different metallurgical structures, with very different properties can form. Understanding such properties is essential to making quality steel. At room temperature, the most stable form of pure iron is the body-centred cubic (BCC) structure called alpha iron or α-iron. It is a fairly soft metal that can dissolve only a small concentration of carbon, no more than 0.005% at 0 °C (32 °F) and 0.021 wt% at 723 °C (1,333 °F). The inclusion of carbon in alpha iron is called ferrite. At 910 °C, pure iron transforms into a face-centred cubic (FCC) structure, called gamma iron or γ-iron. The inclusion of carbon in gamma iron is called austenite. The more open FCC structure of austenite can dissolve considerably more carbon, as much as 2.1%,[9] (38 times that of ferrite) carbon at 1,148 °C (2,098 °F), which reflects the upper carbon content of steel, beyond which is cast iron.[10] When carbon moves out of solution with iron, it forms a very hard, but brittle material called cementite (Fe3C).
+            
+            When steels with exactly 0.8% carbon (known as a eutectoid steel), are cooled, the austenitic phase (FCC) of the mixture attempts to revert to the ferrite phase (BCC). The carbon no longer fits within the FCC austenite structure, resulting in an excess of carbon. One way for carbon to leave the austenite is for it to precipitate out of solution as cementite, leaving behind a surrounding phase of BCC iron called ferrite with a small percentage of carbon in solution. The two, ferrite and cementite, precipitate simultaneously producing a layered structure called pearlite, named for its resemblance to mother of pearl. In a hypereutectoid composition (greater than 0.8% carbon), the carbon will first precipitate out as large inclusions of cementite at the austenite grain boundaries until the percentage of carbon in the grains has decreased to the eutectoid composition (0.8% carbon), at which point the pearlite structure forms. For steels that have less than 0.8% carbon (hypoeutectoid), ferrite will first form within the grains until the remaining composition rises to 0.8% of carbon, at which point the pearlite structure will form. No large inclusions of cementite will form at the boundaries in hypoeuctoid steel.[11] The above assumes that the cooling process is very slow, allowing enough time for the carbon to migrate.
+            
+            As the rate of cooling is increased the carbon will have less time to migrate to form carbide at the grain boundaries but will have increasingly large amounts of pearlite of a finer and finer structure within the grains; hence the carbide is more widely dispersed and acts to prevent slip of defects within those grains, resulting in hardening of the steel. At the very high cooling rates produced by quenching, the carbon has no time to migrate but is locked within the face-centred austenite and forms martensite. Martensite is a highly strained and stressed, supersaturated form of carbon and iron and is exceedingly hard but brittle. Depending on the carbon content, the martensitic phase takes different forms. Below 0.2% carbon, it takes on a ferrite BCC crystal form, but at higher carbon content it takes a body-centred tetragonal (BCT) structure. There is no thermal activation energy for the transformation from austenite to martensite.[clarification needed] There is no compositional change so the atoms generally retain their same neighbors.[12]
+            
+            Martensite has a lower density (it expands during the cooling) than does austenite, so that the transformation between them results in a change of volume. In this case, expansion occurs. Internal stresses from this expansion generally take the form of compression on the crystals of martensite and tension on the remaining ferrite, with a fair amount of shear on both constituents. If quenching is done improperly, the internal stresses can cause a part to shatter as it cools. At the very least, they cause internal work hardening and other microscopic imperfections. It is common for quench cracks to form when steel is water quenched, although they may not always be visible.[13]</p>
           <hr>
         </div>
         <div class="w3-container">
-          <h5 class="w3-opacity"><b>Graphic Designer / designsomething.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+          <h5 class="w3-opacity"><b>Production</b></h5>
+          <p>When iron is smelted from its ore, it contains more carbon than is desirable. To become steel, it must be reprocessed to reduce the carbon to the correct amount, at which point other elements can be added. In the past, steel facilities would cast the raw steel product into ingots which would be stored until use in further refinement processes that resulted in the finished product. In modern facilities, the initial product is close to the final composition and is continuously cast into long slabs, cut and shaped into bars and extrusions and heat treated to produce a final product. Today, approximately 96% of steel is continuously cast, while only 4% is produced as ingots.[16]
+
+            The ingots are then heated in a soaking pit and hot rolled into slabs, billets, or blooms. Slabs are hot or cold rolled into sheet metal or plates. Billets are hot or cold rolled into bars, rods, and wire. Blooms are hot or cold rolled into structural steel, such as I-beams and rails. In modern steel mills these processes often occur in one assembly line, with ore coming in and finished steel products coming out.[17] Sometimes after a steel's final rolling, it is heat treated for strength; however, this is relatively rare.[18] </p><br>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Makeup</b></h5>
+          <p>Steel is characterized by the presence of iron and carbon. The ratio of these two elements varies depending on the specific type of steel being made. With that said, most types of steel contain about 1% carbon and 97% iron, with the remaining 2% consisting of trace elements and impurities</p>
+          <p>Iron</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:97%">97%</div>
+          </div>
+          <p>Carbon</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:1%">1%</div>
+          </div>
+          <p>Other</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-black" style="width:2%">2%</div>
+          </div>
+          <br>
         </div>
       </div>
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>W3Schools.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Forever</h6>
-          <p>Web Development! All I need to know in one place</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>London Business School</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2015</h6>
-          <p>Master Degree</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>School of Coding</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2013</h6>
-          <p>Bachelor Degree</p><br>
-        </div>
-      </div>
+      <img src="https://wisconsinmetaltech.com/wp-content/uploads/2018/12/guide-to-steel-wisconsin.jpg" style="width:100%" alt="1">
+      <img src="https://media.discordapp.net/attachments/555116792821972992/1024493779446677534/unknown.png" style="width:100%" alt="2">
     </div>
   </div>
 </div>
-
 <footer class="w3-container w3-black w3-center w3-margin-top">
+  <script src="{{ url_for('static', filename='javascript/carousel.js') }}"></script>
+  <p></p>
   <div id="n"> 
     <form method="post" action="{{ url_for('tasks') }}">
-      <p></p><input type="submit" value="Return" name="click"/><p></p>
+      <p><input type="submit" value="Return" name="click"/></p>
     </form>
   </div> 
 </footer>
-
 </body>
 </html>

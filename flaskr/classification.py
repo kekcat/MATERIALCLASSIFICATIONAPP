@@ -5,18 +5,18 @@ import os
 
 
 np.set_printoptions(suppress=True)
-
 model = load_model('flaskr\Model\keras_model.h5')
-
 with open ('flaskr\Model\labels.txt', 'r') as f:
     class_names = f.read().split('\n')
 
 
-def classify():
+def classify(image="shot.png"):
     retdict = {}
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     
-    image = Image.open('flaskr/Photos/shot.png')
+    imagePath = f'flaskr/Photos/{image}'
+    
+    image = Image.open(imagePath)
     size = (224, 224)
     image = ImageOps.fit(image, size, Image.ANTIALIAS)
     image_array = np.asarray(image)
@@ -39,7 +39,7 @@ def classify():
         retdict.get('percents').update({class_name: "{:.2f}".format(float(item * 100)).split('.')[0]})
     print(retdict)
 
-    os.remove('flaskr/Photos/shot.png')
+    os.remove(imagePath)
 
     return retdict
 

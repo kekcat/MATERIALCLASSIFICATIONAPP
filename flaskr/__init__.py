@@ -1,8 +1,9 @@
-from ast import Return
-from flask import Flask, render_template, Response, request
+from flask import Flask, render_template, Response, request, redirect, flash, url_for
 from classification import classify
+from werkzeug.utils import secure_filename
 import cv2
 import os
+
 
 global typedata
 typedata = 0
@@ -18,6 +19,13 @@ global pictaken
 pictaken = False
 global globaltempath
 globaltempath = 'materialPages/'
+global imagVar
+imageVar = 0
+global imgLinks
+global fileTypes
+FileTypes = {'png', 'jpg', 'jpeg'}
+p = 'flaskr/Photos/shot.png'
+ddata = {'prediction': 'Steel', 'percents': {'Wood': '0', 'Steel': '0', 'Concrete': '0', 'Obsidian': '0', 'Coal': '0', 'Conglomerate': '0', 'Copper': '0', 'Bismuth': '0', 'Gold': '0', 'Granite': '0'}}
 
 
 try:
@@ -27,6 +35,7 @@ except OSError as error:
 
 
 app = Flask(__name__, template_folder='./templates')
+app.config['UPLOAD_FOLDER'] = 'flaskr\Photos'
 camera = cv2.VideoCapture(0)
 
 
@@ -91,14 +100,16 @@ def tasks():
     global pageDec
     global pictaken
     global globaltempath
+    global imageVar
 
     if request.method == 'POST':
-
         if request.form.get('mat'):
             matPage = request.form.get('mat')
 
-            page = f"{globaltempath}{matPage}/{matPage.lower()}2.html"
-            return render_template(page)
+            page = f"{globaltempath}{matPage}/{matPage.lower()}.html"
+            ddata['prediction'] = matPage
+            ddata['percents'][matPage] = '100'
+            return render_template(page, data=ddata)
         
         if request.form.get('click') == 'Capture':
             global capture
@@ -113,24 +124,56 @@ def tasks():
 
             else:
                 return render_template("nomat.html")
-
-
     elif request.method == 'GET':
         return render_template('index.html')
+
     return render_template('index.html')
 
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in FileTypes
+
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print("File Recieved")
+
+            typedata = classify(image=filename)
+
+            pageDec = typedata['prediction'].lower()
+            pageDec = f"{globaltempath}{typedata['prediction'].lower()}/{pageDec}.html"
+            print(pageDec)
+            return render_template(pageDec, data=typedata)
+        
+    return render_template("filetype.html")
 
 
 @app.route('/steel')
 def steel():
-    return render_template('steel2.html')
+    return render_template('flaskr\templates\materialPages\steel\steel2.html')
 
 @app.route('/wood')
 def wood():
-    return render_template('wood2.html')
+    return render_template('flaskr\templates\materialPages\wood\wood2.html')
 
+@app.route('/test')
+def test():
+    return render_template('flaskr\templates\materialPages\steel\steel copy.html')
 
-
-if __name__ == '__main__':
+if __name__ == '__main__':  
+    app.config['UPLOAD_FOLDER'] = 'flaskr/Photos'
     app.run()
